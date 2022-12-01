@@ -1,0 +1,59 @@
+package AoC;
+
+import java.util.Scanner;
+
+public class day1Problem1 {
+
+   public static void main(String[] args) {
+      Scanner stdin = new Scanner(System.in);
+      int cnt = 0;
+      int[] elves = new int[1000];
+      while (stdin.hasNextLine()) {
+
+         int total = 0;
+         String x = "a";
+         int y = x.length();
+
+         // finds the total cals
+         while (y > 0) {
+            if (stdin.hasNextLine()) {
+               x = stdin.nextLine();
+               y = x.length();
+               if (y > 0) {
+                  total += Integer.valueOf(x);
+               }
+            } else {
+               y = 0;
+            }
+         }
+
+         //end of process
+         elves[cnt] = total;
+
+         cnt++;
+      }
+      int[] trimmed = trim(elves);
+      int max = 0;
+      for (int i = 0; i < trimmed.length; i++) {
+         if (trimmed[i] > max) {
+            max = trimmed[i];
+         }
+      }
+      System.out.print(max);
+   }
+
+   public static int[] trim(int[] elves) {
+      int counter = 0;
+      for (int i = 0; i < 1000; i++) {
+
+         if (elves[i] > 0) {
+            counter++;
+         }
+      }
+      int[] trimmed = new int[counter];
+      for (int i = 0; i < counter; i++) {
+         trimmed[i] = elves[i];
+      }
+      return trimmed;
+   }
+}
