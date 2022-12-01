@@ -1,0 +1,90 @@
+package AoC;
+
+import java.util.Scanner;
+
+public class day1Problem2 {
+
+   public static void main(String[] args) {
+      Scanner stdin = new Scanner(System.in);
+      int cnt = 0;
+      int[] elves = new int[1000];
+      while (stdin.hasNextLine()) {
+
+         int total = 0;
+         String x = "a";
+         int y = x.length();
+
+         // finds the total cals
+         while (y > 0) {
+            if (stdin.hasNextLine()) {
+               x = stdin.nextLine();
+               y = x.length();
+               if (y > 0) {
+                  total += Integer.valueOf(x);
+               }
+            } else {
+               y = 0;
+            }
+         }
+
+         //end of process
+         elves[cnt] = total;
+
+         cnt++;
+      }
+      int[] trimmed = trim(elves);
+      int max1 = 0;
+      int f = 0;
+      for (int i = 0; i < trimmed.length; i++) {
+         if (trimmed[i] > max1) {
+            max1 = trimmed[i];
+            f = i;
+         }
+        
+      }
+      
+      trimmed[f] = 0;
+      
+      int max2 = 0;
+      
+      for (int i = 0; i < trimmed.length; i++) {
+         if (trimmed[i] > max2) {
+            max2 = trimmed[i];
+            f = i;
+         }
+      }
+      trimmed[f] = 0;
+      
+      int max3 = 0;
+      for (int i = 0; i < trimmed.length; i++) {
+         if (trimmed[i] > max3) {
+            max3 = trimmed[i];
+            f = i;
+         }
+      }
+      trimmed[f] = 0;
+      int totalMax = max1 + max2 + max3;
+      
+      System.out.print(totalMax);
+   }
+
+
+
+
+
+
+   public static int[] trim(int[] elves) {
+      int counter = 0;
+      for (int i = 0; i < 1000; i++) {
+
+         if (elves[i] > 0) {
+            counter++;
+         }
+      }
+      int[] trimmed = new int[counter];
+      for (int i = 0; i < counter; i++) {
+         trimmed[i] = elves[i];
+      }
+      return trimmed;
+   }
+}
