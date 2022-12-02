@@ -1,0 +1,74 @@
+package AoC;
+
+import java.util.Scanner;
+
+public class day2Problem2 {
+   public static void main(String[] args) {
+      Scanner stdin = new Scanner(System.in);
+      int win = 0;
+      int total = 0;
+while (stdin.hasNextLine()){
+  char opp = stdin.next().charAt(0);
+  char need = stdin.next().charAt(0);
+   win = result(opp, need);
+   int selfScore = score(need);
+   total += win + selfScore;
+  
+}
+ System.out.println(total);
+
+   }
+   
+   
+   public static int result(char opp, char need){
+      int result = 0;
+      
+      if (opp == 'A'){
+          if(need == 'X'){
+            result = 3;
+         }
+         if(need == 'Y'){
+            result = 1;
+         }
+        if(need == 'Z'){
+           result = 2;
+        }
+      }
+       if (opp == 'B'){
+          if(need == 'X'){
+            result = 1;
+         }
+         if(need == 'Y'){
+            result = 2;
+         }
+        if(need == 'Z'){
+           result = 3;
+        }
+      }
+       if (opp == 'C'){
+          if(need == 'X'){
+            result = 2;
+         }
+         if(need == 'Y'){
+            result = 3;
+         }
+        if(need == 'Z'){
+           result = 1;
+        }
+      }
+      return result;
+   }
+   public static int score(int need){
+   int score = 0;
+   if (need == 'X'){
+      score = 0;
+   }
+   if (need == 'Y'){
+      score = 3;
+   }
+   if (need == 'Z'){
+      score = 6;
+       }
+       return score;
+   }
+}
